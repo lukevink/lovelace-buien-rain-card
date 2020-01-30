@@ -17,9 +17,9 @@ Graph of Buienradars rain forecast
 
 ### Add as a card to your UI
 
-      - type: 'custom:rain-card'
-        long: 4.93423
-        lat: 52.36515
+      - type: 'custom:buien-rain-forecast'
+        long: 4.8945
+        lat: 52.3667
         lineColor: 'rgba(89, 160, 238, 1)'
         fillColor: 'rgba(89, 160, 238, 0.2)'
         icon: 'mdi:weather-rainy'
