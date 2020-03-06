@@ -22,7 +22,10 @@ Graph of Buienradars rain forecast
         lat: 52.3667
         lineColor: 'rgba(89, 160, 238, 1)'
         fillColor: 'rgba(89, 160, 238, 0.2)'
+        update_interval: 10
         icon: 'mdi:weather-rainy'
+        
+ (update interval is in seconds)
 
 ### An example in my own UI as a Picture Element:
 
