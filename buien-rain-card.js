@@ -6,7 +6,8 @@ class RainCard extends HTMLElement {
 			mode: 'open'
 		});
 	}
-
+	
+	
 	setConfig(config) {
 
 
@@ -62,45 +63,19 @@ class RainCard extends HTMLElement {
 		if (cardConfig.icon) card.appendChild(icon);
 		root.appendChild(card);
 		
-		this.update_interval = config.update_interval || 30;
+		this.update_interval = config.update_interval || 20;
 		this.lat = config.lat;
 		this.long = config.long;
 		this.lineColor = config.lineColor;
 		this.fillColor = config.fillColor;
 		this._config = cardConfig;
 		
-	}
-
-	set hass(hass) {
-
-		const config = this._config;
-		const root = this.shadowRoot;
-		
-
-		this.style.display = 'block';
-		root.getElementById('container').innerHTML = '<canvas id="rainchart"></canvas>';
-
-		
-
-		this.initGraph(root.getElementById('rainchart').getContext('2d'));
-		
-
-		root.lastChild.hass = hass;
-
-	}
-
-	initGraph(element) {
-
-		var _this = this;
-
 		this.result = [];
 		this.time = [];
 		this.rainfall = [];
-
-
-
-
-		this.initial_options = {
+		this.drawGraph = true;
+		
+		this.initconfig = {
 			type: 'line',
 			data: {
 				labels: this.time,
@@ -178,17 +153,31 @@ class RainCard extends HTMLElement {
 			}
 		}
 
+		this.style.display = 'block';
+		root.getElementById('container').innerHTML = '<canvas id="rainchart"></canvas>';
 
+		this.initGraph(root.getElementById('rainchart').getContext('2d'));
+		
+	}
+
+	set hass(hass) {
+
+		const config = this._config;
+		const root = this.shadowRoot;
+		
+
+		root.lastChild.hass = hass;
+
+	}
+
+	initGraph(element) {
+
+		var _this = this;
 
 
 		// 			console.log(rainfall);
 		// 			console.log(time);
-
-
-		this.ctx = element;
-		this.chart = new Chart(this.ctx, this.initial_options);
-
-
+		
 		var originalLineDraw = Chart.controllers.line.prototype.draw;
 		Chart.helpers.extend(Chart.controllers.line.prototype, {
 			draw: function() {
@@ -216,17 +205,22 @@ class RainCard extends HTMLElement {
 				}
 			}
 		});
+		
 
+		if(this.drawGraph){
+		
+			this.ctx = element;
+			this.chart = new Chart(this.ctx, this.initconfig);
 
-
-
-
-		this.getData();
-
-		setInterval(function() {
-			_this.updateGraph();
-		}, this.update_interval * 1000);
-
+		
+// 		this.updateGraph();
+			this.updateGraph();
+			setInterval(function() {
+				_this.updateGraph();
+			}, this.update_interval * 1000);
+			this.drawGraph = false;
+		}
+		
 
 	}
 
@@ -268,8 +262,7 @@ class RainCard extends HTMLElement {
 				this.time.push(variables[1]);
 			}
 		}
-		
-		
+				
 				this.chart.data = {
 					labels: this.time,
 					datasets: [{
@@ -280,10 +273,16 @@ class RainCard extends HTMLElement {
 						data: this.rainfall
 					}]
 				}
-				this.chart.update({
-					duration: 0,
-					easing: 'easeOutBounce'
-				});
+				this.chart.update();
+
+		
+// 			if(this.chart.data.labels != this.time){
+/*
+				this.chart.data.labels = this.time;
+				this.chart.data.datasets[0].data = this.rainfall;
+				this.chart.update();
+*/
+// 			}
 
 	}
 
