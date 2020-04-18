@@ -307,7 +307,7 @@ class RainCard extends HTMLElement {
 customElements.define('buien-rain-forecast', RainCard);
 
 console.info(
-  `%cBUIEN-RAIN-CARD\n%cVersion: 0.0.3`,
+  `%cBUIEN-RAIN-CARD\n%cVersion: 0.0.4`,
   "color: green; font-weight: bold;",
   ""
 );
