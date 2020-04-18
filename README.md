@@ -1,4 +1,4 @@
-# home-assistant-buienradar-forecast-card
+# Home Assistant Buienradar Forecast Card
 Graph of Buienradars rain forecast 
 
 ![Preview Image](https://github.com/lukevink/home-assistant-buienradar-forecast-card/blob/master/buien-card-screenshot1.png)
