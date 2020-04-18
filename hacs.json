@@ -2,4 +2,5 @@
   "name": "Buienradar Forecast Card",
   "content_in_root": true,
   "filename": "buien-rain-card.js",
+  "country": "NL"
 }
