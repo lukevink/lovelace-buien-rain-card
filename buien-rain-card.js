@@ -1,3 +1,8 @@
+/*
+Luke Vink 2020
+www.lukevink.com
+*/
+
 class RainCard extends HTMLElement {
 
 	constructor() {
@@ -143,8 +148,9 @@ class RainCard extends HTMLElement {
 							scaleInstance.ticksAsNumbers[scaleInstance.ticksAsNumbers.length - 1] = null;
 						},
 						ticks: {
-							suggestedMax: 5.0,
-							max: 5.0,
+							suggestedMax: 10.0,
+							suggestedMin: 5.0,
+							beginAtZero: true,
 							stepSize: 1,
 							mirror: true,
 						}
@@ -173,7 +179,6 @@ class RainCard extends HTMLElement {
 	initGraph(element) {
 
 		var _this = this;
-
 
 		// 			console.log(rainfall);
 		// 			console.log(time);
@@ -212,8 +217,6 @@ class RainCard extends HTMLElement {
 			this.ctx = element;
 			this.chart = new Chart(this.ctx, this.initconfig);
 
-		
-// 		this.updateGraph();
 			this.updateGraph();
 			setInterval(function() {
 				_this.updateGraph();
@@ -304,7 +307,7 @@ class RainCard extends HTMLElement {
 customElements.define('buien-rain-forecast', RainCard);
 
 console.info(
-  `%cBUIEN-RAIN-CARD\n%cVersion: 0.0.2`,
+  `%cBUIEN-RAIN-CARD\n%cVersion: 0.0.3`,
   "color: green; font-weight: bold;",
   ""
 );
