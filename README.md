@@ -24,8 +24,10 @@ Graph of Buienradars rain forecast
         fillColor: 'rgba(89, 160, 238, 0.2)'
         update_interval: 10
         icon: 'mdi:weather-rainy'
+        height: 300  
         
  (update interval is in seconds)
+ (height is optional)
 
 ### An example in my own UI as a Picture Element:
 
