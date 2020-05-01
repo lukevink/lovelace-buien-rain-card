@@ -27,7 +27,8 @@ class RainCard extends HTMLElement {
 		if (!cardConfig.long) cardConfig.long = '4.899431';
 		if (!cardConfig.lat) cardConfig.lat = '52.377956';
 		if (!cardConfig.fillColor) cardConfig.fillColor = "rgba(0, 150, 255, 0.21)";
-		if (!cardConfig.lineColor) cardConfig.lineColor = "#0096ff";
+		if (!cardConfig.lineColor) cardConfig.lineColor = "#0096ff";	
+		if (!cardConfig.height) cardConfig.height = "300";
 
 		function hexToRgb(hex) {
 			var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -59,6 +60,9 @@ class RainCard extends HTMLElement {
         }
         #container {
           padding: 20px 30px 10px 20px;
+        }
+        #rainchart {
+          height: ` + cardConfig.height + `px;
         }
       `;
 		content.id = 'container';
