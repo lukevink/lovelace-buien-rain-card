@@ -3,6 +3,8 @@ I created this card out of desperation (there was no way to forecast) and its im
 Please try the [Neerslaag App](https://github.com/aex351/home-assistant-neerslag-app) from aex351 who did some awesome work and made a much better implimentation. [Visit on HAS Forum](https://community.home-assistant.io/t/neerslag-card-rain-forecast-buienalarm-and-or-buienradar/287512)
 
 
+
+
 # Home Assistant Buienradar Forecast Card
 Graph of Buienradars rain forecast 
 
