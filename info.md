@@ -1,15 +1,32 @@
-## Breaking Change in v1.2.0:<br>Configuration has changed and can now be done in lovelace config.<br>See repo for more info.<br><br>
+# Home Assistant Buienradar Forecast Card
+Graph of Buienradars rain forecast 
 
-<img src="https://github.com/maykar/lovelace-swipe-navigation/blob/master/example.gif?raw=true" width="350px">
+![Preview Image](https://github.com/lukevink/home-assistant-buienradar-forecast-card/blob/master/buien-card-screenshot1.png)
 
-# Features:
-* Animated swiping through Lovelace views.
-* Configure views to skip over.
-* Set the swipe length needed.
-* Option to disable a browsers default swipe actions.
-* Wrap from first view to last view and vice versa.
+### Simple install
 
-<br>
+1. Download and copy `buien-rain-card.js` into your `config/www` directory.
 
-**This is included as a feature in <a href="https://github.com/maykar/compact-custom-header/" target="_blank">compact-custom-header</a>, there is no need to install this if you already use CCH.**<br><br>
-<a href="https://www.buymeacoffee.com/FgwNR2l" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a><br>
+2. Add a reference to `buien-rain-card.js` inside your `ui-lovelace.yaml`.
+
+  ```yaml
+  resources:
+    - url: /local/buien-rain-card.js
+      type: module
+  ```
+
+### Add as a card to your UI
+
+      - type: 'custom:buien-rain-forecast'
+        long: 4.8945
+        lat: 52.3667
+        lineColor: 'rgba(89, 160, 238, 1)'
+        fillColor: 'rgba(89, 160, 238, 0.2)'
+        update_interval: 10
+        icon: 'mdi:weather-rainy'
+        
+ (update interval is in seconds)
+
+### An example in my own UI as a Picture Element:
+
+![Preview Image](https://github.com/lukevink/home-assistant-buienradar-forecast-card/blob/master/buien-card-screenshot2.png)
